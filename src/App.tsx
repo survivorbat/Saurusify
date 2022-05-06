@@ -9,7 +9,8 @@ import Input from './components/Input';
 const wordCache: Record<string, string> = {};
 
 function handleUpdate(input: string, setOutput: (output: string) => void) {
-  const result = input.split(' ').map((w, index) => {
+  const result = input.split(/\b[^\w']+\b/).map((w, index) => {
+    console.log(w);
     const cacheKey = `${w}_${index}`;
     if (wordCache[cacheKey]) {
       return wordCache[cacheKey];
