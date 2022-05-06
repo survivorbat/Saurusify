@@ -18,7 +18,7 @@ function Input({ updateInput }: Props) {
       <h2>Input</h2>
       <textarea
         className="form-control"
-        rows={10}
+        rows={25}
         value={input}
         onChange={(e) => handleUpdate(e.target.value)}
       />

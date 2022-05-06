@@ -9,15 +9,14 @@ import Input from './components/Input';
 const wordCache: Record<string, string> = {};
 
 function handleUpdate(input: string, setOutput: (output: string) => void) {
-  const result = input.split(/\b[^\w']+\b/).map((w, index) => {
-    console.log(w);
+  const result = input.split(/(\b[^\w']+\b)/).map((w, index) => {
+    if (w.length <= 3) {
+      return w;
+    }
+
     const cacheKey = `${w}_${index}`;
     if (wordCache[cacheKey]) {
       return wordCache[cacheKey];
-    }
-
-    if (w.length <= 3) {
-      return w;
     }
 
     const synonyms = synonymsArray.get(w);
