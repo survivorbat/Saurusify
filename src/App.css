@@ -1,0 +1,16 @@
+.title-container {
+  width: 100%;
+  text-align: center;
+  margin-top: 5em;
+  margin-bottom: 5em;
+}
+
+.title-container h1 {
+  font-size: 6em;
+}
+
+.panel {
+  padding: 1em;
+  background: whitesmoke;
+  text-align: center;
+}
