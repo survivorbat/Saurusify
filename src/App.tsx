@@ -1,7 +1,7 @@
 import * as React from 'react';
 import './App.css';
 import { useState } from 'react';
-import * as synonymsArray from 'synonyms-array';
+import { synonym } from 'js-synonyms';
 import { Col, Container, Row } from 'react-bootstrap';
 import Output from './components/Output';
 import Input from './components/Input';
@@ -19,16 +19,16 @@ function handleUpdate(input: string, setOutput: (output: string) => void) {
       return wordCache[cacheKey];
     }
 
-    const synonyms = synonymsArray.get(w);
+    const synonyms = synonym(w);
 
     if (synonyms.length === 0) {
       return w;
     }
 
-    const synonym = synonyms[Math.floor(Math.random() * synonyms.length)];
+    const chosenSynonym = synonyms[Math.floor(Math.random() * synonyms.length)];
 
-    wordCache[cacheKey] = synonym;
-    return synonym;
+    wordCache[cacheKey] = chosenSynonym;
+    return chosenSynonym;
   });
 
   setOutput(result.join(' '));
