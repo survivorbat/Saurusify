@@ -10,10 +10,6 @@ const wordCache: Record<string, string> = {};
 
 function handleUpdate(input: string, setOutput: (output: string) => void) {
   const result = input.split(' ').map((w, index) => {
-    if (w.length <= 3) {
-      return w;
-    }
-
     const cacheKey = `${w}_${index}`;
     if (wordCache[cacheKey]) {
       return wordCache[cacheKey];
