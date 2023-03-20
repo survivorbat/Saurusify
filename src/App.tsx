@@ -9,16 +9,16 @@ import Input from './components/Input';
 const wordCache: Record<string, string> = {};
 
 function handleUpdate(input: string, setOutput: (output: string) => void) {
-  const result = input.split(' ').map((w, index) => {
-    const cacheKey = `${w}_${index}`;
+  const result = input.split(/\b/).map((word, index) => {
+    const cacheKey = `${word}_${index}`;
     if (wordCache[cacheKey]) {
       return wordCache[cacheKey];
     }
 
-    const synonyms = synonym(w);
+    const synonyms = synonym(word);
 
     if (synonyms.length === 0) {
-      return w;
+      return word;
     }
 
     const chosenSynonym = synonyms[Math.floor(Math.random() * synonyms.length)];
@@ -27,7 +27,7 @@ function handleUpdate(input: string, setOutput: (output: string) => void) {
     return chosenSynonym;
   });
 
-  setOutput(result.join(' '));
+  setOutput(result.join(''));
 }
 
 function App() {
@@ -43,10 +43,10 @@ function App() {
         </Col>
       </Row>
       <Row>
-        <Col>
+        <Col md={6} sm={12}>
           <Input updateInput={(update) => handleUpdate(update, setOutput)} />
         </Col>
-        <Col>
+        <Col md={6} sm={12}>
           <Output output={output} />
         </Col>
       </Row>
