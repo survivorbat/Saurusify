@@ -8,7 +8,7 @@ function Output({ output }: Props) {
   return (
     <div className="panel">
       <h2>Harvest</h2>
-      <textarea className="form-control" rows={25} value={output} readOnly />
+      <textarea className="form-control" rows={8} value={output} readOnly />
     </div>
   );
 }
