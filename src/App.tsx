@@ -10,6 +10,11 @@ const wordCache: Record<string, string> = {};
 
 function handleUpdate(input: string, setOutput: (output: string) => void) {
   const result = input.split(/\b/).map((word, index) => {
+    // Skip words that are too short
+    if (word.length < 4) {
+      return word;
+    }
+
     const cacheKey = `${word}_${index}`;
     if (wordCache[cacheKey]) {
       return wordCache[cacheKey];
